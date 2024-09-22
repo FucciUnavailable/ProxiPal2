@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Login Section -->
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-4 text-center">Login to Your Wallet</h1>
+      <input class="border p-2 w-full mb-4" type="email" placeholder="Email">
+      <input class="border p-2 w-full mb-4" type="password" placeholder="Password">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded mb-4">Sign In</button>
+      <p class="text-center text-sm text-gray-500">Don't have an account? <a href="#" class="text-blue-500 hover:underline">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- Dashboard Section -->
+  <div class="p-4">
+    <h2 class="text-3xl font-bold mb-4 text-center">Wallet Dashboard</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Balance</h2>
+        <p class="text-2xl">$1,200</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Transactions</h2>
+        <p>Recent transactions are listed below.</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Add Funds</h2>
+        <p>Click here to add funds to your wallet.</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Settings</h2>
+        <p>Manage your account and security settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction History Section -->
+  <div class="p-4">
+    <h3 class="text-2xl font-bold mb-4 text-center">Transaction History</h3>
+    <table class="min-w-full table-auto bg-white rounded-lg shadow-lg">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Date</th>
+          <th class="px-4 py-2">Description</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">12/09/2024</td>
+          <td class="border px-4 py-2">Payment to ABC</td>
+          <td class="border px-4 py-2 text-red-500">- $100</td>
+          <td class="border px-4 py-2">Completed</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">11/09/2024</td>
+          <td class="border px-4 py-2">Deposit from XYZ</td>
+          <td class="border px-4 py-2 text-green-500">+ $500</td>
+          <td class="border px-4 py-2">Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Security Section -->
+  <div class="p-4">
+    <div class="bg-white shadow-md p-6 rounded-lg">
+      <h3 class="text-xl font-bold">Security Settings</h3>
+      <p class="mt-2 text-sm text-gray-500">Enable two-factor authentication for added security.</p>
+      <button class="mt-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Enable 2FA</button>
+    </div>
+  </div>
+
+</body>
+</html>
