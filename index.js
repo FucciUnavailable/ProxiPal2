@@ -40,6 +40,11 @@ app.post("/api/login", async (req, res) => {
 
 
 // Start server
+/*
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
+
+  */
+
+module.exports = app; // Export the app for Vercel
