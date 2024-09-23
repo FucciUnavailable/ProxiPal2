@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baddour's Profile - Digital Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+   <!-- Navigation Bar -->
+   <nav class="bg-white shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-blue-500">ProxiPal</a>
+      <ul class="flex space-x-6">
+        <li><a href="./account.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
+        <li><a href="./order.html" class="text-gray-700 hover:text-blue-500">New Order</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-500">Contact Us</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-500">Hello Baddour</a></li>
+        <li><a href="./profile.html" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Profile</a></li>
+        <li><a href="./index.html" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-blue-600">Disconnect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-500 text-white py-20">
+        <div class="container mx-auto text-center">
+          <h1 class="text-4xl font-bold mb-4">Welcome to Your Profile, Baddour</h1>
+          <p class="text-xl mb-8">Manage your account and settings here.</p>
+        </div>
+      </header>
+    
+  <!-- Profile Section -->
+  <div class="p-4">
+    <h2 class="text-3xl font-bold mb-4 text-center">Profile Details</h2>
+    <div class="bg-white shadow rounded-lg p-6">
+      <h3 class="text-xl font-bold">Personal Information</h3>
+      <p><strong>Name:</strong> Baddour</p>
+      <p><strong>Email:</strong> baddour@test.com</p>
+      <p><strong>Account Created:</strong> 01/01/2024</p>
+      <p><strong>Status:</strong> Active</p>
+    </div>
+  </div>
+
+  <!-- Wallet Dashboard Section -->
+  <div class="p-4">
+    <h2 class="text-3xl font-bold mb-4 text-center">Wallet Dashboard</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Balance</h2>
+        <p class="text-2xl">$1,200</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Transactions</h2>
+        <p>Recent transactions are listed below.</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Add Funds</h2>
+        <p>Click here to add funds to your wallet.</p>
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-xl font-bold">Settings</h2>
+        <p>Manage your account and security settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction History Section -->
+  <div class="p-4">
+    <h3 class="text-2xl font-bold mb-4 text-center">Transaction History</h3>
+    <table class="min-w-full table-auto bg-white rounded-lg shadow-lg">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Date</th>
+          <th class="px-4 py-2">Description</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">12/09/2024</td>
+          <td class="border px-4 py-2">Payment to ABC</td>
+          <td class="border px-4 py-2 text-red-500">- $100</td>
+          <td class="border px-4 py-2">Completed</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">11/09/2024</td>
+          <td class="border px-4 py-2">Deposit from XYZ</td>
+          <td class="border px-4 py-2 text-green-500">+ $500</td>
+          <td class="border px-4 py-2">Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Security Section -->
+  <div class="p-4">
+    <div class="bg-white shadow-md p-6 rounded-lg">
+      <h3 class="text-xl font-bold">Security Settings</h3>
+      <p class="mt-2 text-sm text-gray-500">Enable two-factor authentication for added security.</p>
+      <button class="mt-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Enable 2FA</button>
+    </div>
+  </div>
+
+ <!-- Footer Section -->
+ <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <p class="mb-4">Follow us on social media</p>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="hover:text-gray-400">Facebook</a>
+        <a href="#" class="hover:text-gray-400">Twitter</a>
+        <a href="#" class="hover:text-gray-400">LinkedIn</a>
+      </div>
+      <p class="mt-8 text-sm">&copy; 2024 ProxiPal. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

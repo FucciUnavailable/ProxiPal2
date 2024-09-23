@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 
 //testing the login api
-/*
+
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -34,7 +34,7 @@ app.post("/api/login", async (req, res) => {
       res.status(400).send("Error logging in");
   }
 });
-*/
+
 
 
 
@@ -42,11 +42,11 @@ app.post("/api/login", async (req, res) => {
 
 
 // Start server
-/*
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
 
-  */
+  
 
 module.exports = app; // Export the app for Vercel
