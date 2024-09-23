@@ -1,0 +1,27 @@
+{
+  "name": "proxipal2",
+  "version": "1.0.0",
+  "description": "digital wallet website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "\"test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FucciUnavailable/ProxiPal2.git"
+  },
+  "keywords": [
+    "proxipal"
+  ],
+  "author": "Fucci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FucciUnavailable/ProxiPal2/issues"
+  },
+  "homepage": "https://github.com/FucciUnavailable/ProxiPal2#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7"
+  }
+}
