@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 });
 
 
+//testing the login api
+/*
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -32,7 +34,7 @@ app.post("/api/login", async (req, res) => {
       res.status(400).send("Error logging in");
   }
 });
-
+*/
 
 
 
