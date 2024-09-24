@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
+const Transaction = require("./models/Transaction");
+
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
@@ -43,19 +45,31 @@ app.post("/api/signup", async (req, res) => {
   const { name, email, password, "confirm-password": confirmPassword } = req.body;
 
   if (password !== confirmPassword) {
-    return res.status(400).send("Passwords do not match.");
+    return res.render('signup', { error: "Passwords do not match." });
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
-    const newUser = new User({ name, email, password: hashedPassword });
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.render('signup', { error: "Email already in use." });
+    }
+
+    // Log the password before hashing
+    console.log("Password before hashing:", password);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("Hashed password:", hashedPassword);
+    let hash = hashedPassword
+    const newUser = new User({ name:name, email:email, password: hash });
     await newUser.save();
+    
+    console.log("New user created:", newUser);
     res.status(201).redirect("/login");
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error creating user");
+    return res.render('signup', { error: "Error creating user. Please try again." });
   }
 });
+
 
 // API login endpoint
 app.post("/api/login", async (req, res) => {
@@ -74,7 +88,7 @@ app.post("/api/login", async (req, res) => {
 
     req.session.userId = user._id; // Save user session ID
     console.log("User ID set in session:", req.session.userId); // Add this line for debugging
-    res.redirect("/account"); // Redirect to account page
+    res.redirect("/profile"); // Redirect to account page
   } catch (err) {
     console.error(err);
     res.status(500).send("Error logging in");
@@ -96,40 +110,116 @@ app.get("/account", ensureAuthenticated, async (req, res) => {
     const user = await User.findById(req.session.userId);
     if (!user) return res.redirect("/");
 
-    res.render("account", { user });
+    res.render("account", { user, title: "Account" }); // Set the title here
   } catch (err) {
     console.error(err);
     res.status(500).send("Error loading account page");
   }
 });
 
+
+//login render
 app.get("/login", (req, res) => {
   res.render("login"); // Render login.ejs
 });
 
+// Render signup page
 app.get("/signup", (req, res) => {
-  res.render("signup"); // Render signup.ejs (make sure this file exists)
+  res.render('signup', { error: null }); // Always pass error as null for the initial load
 });
-
+//funds render
 app.get("/funds", ensureAuthenticated, (req, res) => {
   res.render("funds", { title: "Add Funds" }); // Render funds.ejs
 });
 
+//profile render
 app.get("/profile", ensureAuthenticated, async (req, res) => {
+  try {
+      const user = await User.findById(req.session.userId);
+      if (!user) return res.redirect("/");
+
+      const transactions = await Transaction.find({ userId: req.session.userId }); // Fetch user's transactions
+
+      res.render("profile", { user, transactions, title: "Profile" }); // Pass transactions to view
+  } catch (err) {
+      console.error(err);
+      res.status(500).send("Error loading profile page");
+  }
+});
+//order render
+app.get("/order", ensureAuthenticated, async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
     if (!user) return res.redirect("/");
 
-    res.render("profile", { user, title: "Profile" });
+    res.render("order", { user, title: "New Order" }); // Pass user to the view
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error loading profile page");
+    res.status(500).send("Error loading order page");
   }
 });
 
-app.get("/order", ensureAuthenticated, async (req, res) => {
-  res.render("order", { title: "New Order" }); // Render order.ejs
+
+
+
+
+
+// API endpoint to create a transaction
+app.post("/api/transaction", ensureAuthenticated, async (req, res) => {
+    const { amount, description, transactionType } = req.body;
+
+    if (!amount || !description || !transactionType) {
+        return res.status(400).send("All fields are required.");
+    }
+
+    try {
+        const transaction = new Transaction({
+            userId: req.session.userId,
+            amount,
+            description,
+            transactionType,
+        });
+        await transaction.save();
+        res.status(201).send("Transaction added successfully.");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error adding transaction.");
+    }
 });
+
+// API endpoint to get user's transactions
+app.get("/api/transactions", ensureAuthenticated, async (req, res) => {
+    try {
+        const transactions = await Transaction.find({ userId: req.session.userId });
+        res.json(transactions);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error retrieving transactions.");
+    }
+});
+
+// Logout route
+app.get("/logout", (req, res) => {
+  req.session.destroy(err => {
+      if (err) {
+          console.error(err);
+          return res.status(500).send("Error logging out.");
+      }
+      res.redirect("/"); // Redirect to home page or login page
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Start server
 app.listen(port, () => {

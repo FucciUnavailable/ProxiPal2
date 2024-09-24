@@ -10,7 +10,7 @@
   <!-- Navigation Bar -->
   <nav class="bg-white shadow-lg">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/account" class="text-2xl font-bold text-blue-500">ProxiPal</a>
+      <a href="/index" class="text-2xl font-bold text-blue-500">ProxiPal</a>
       <ul class="flex space-x-6">
         <li><a href="/index" class="text-gray-700 hover:text-blue-500">Home</a></li>
         <li><a href="/contact" class="text-gray-700 hover:text-blue-500">Contact Us</a></li>
@@ -42,22 +42,16 @@
         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded mb-4">Sign Up</button>
       </form>
 
+      <!-- Display Error Message -->
+      <% if (error) { %>
+        <div class="bg-red-500 text-white p-2 rounded mb-4">
+          <%= error %>
+        </div>
+      <% } %>
+
       <p class="text-center text-sm text-gray-500">Already have an account? <a href="/login" class="text-blue-500 hover:underline">Login here</a></p>
     </div>
   </div>
-
-  <!-- JavaScript for password matching -->
-  <script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-      const password = document.querySelector('input[name="password"]').value;
-      const confirmPassword = document.querySelector('input[name="confirm-password"]').value;
-      
-      if (password !== confirmPassword) {
-        event.preventDefault(); // Prevent form submission
-        alert("Passwords do not match.");
-      }
-    });
-  </script>
 
   <!-- Footer Section -->
   <footer class="bg-gray-800 text-white py-8">

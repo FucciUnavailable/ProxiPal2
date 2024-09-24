@@ -1,8 +1,14 @@
 const bcrypt = require('bcrypt');
 
-const password = 'your_test_password';
-const hashedPassword = await bcrypt.hash(password, 10);
-const isMatch = await bcrypt.compare(password, hashedPassword);
+async function testHashing() {
+  const password = "yourTestPassword"; // Use a test password
+  const saltRounds = 10;
 
-console.log("Hashed Password:", hashedPassword);
-console.log("Password Match:", isMatch);
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  console.log("Hashed password:", hashedPassword);
+
+  const isMatch = await bcrypt.compare(password, hashedPassword);
+  console.log("Password match:", isMatch); // Should return true
+}
+
+console.log(testHashing());
