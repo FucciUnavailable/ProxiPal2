@@ -8,20 +8,26 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-white shadow-lg">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/account" class="text-2xl font-bold text-blue-500">ProxiPal</a>
-      <ul class="flex space-x-6">
-        <li><a href="/account" class="text-gray-700 hover:text-blue-500">Home</a></li>
-        <li><a href="/order" class="text-gray-700 hover:text-blue-500">Order</a></li>
-        <li><a href="/contact" class="text-gray-700 hover:text-blue-500">Contact Us</a></li>
-        <!-- Display the current logged-in user's name dynamically -->
-        <li><a href="#" class="text-gray-700 hover:text-blue-500">Hello <%= user.name %></a></li>
-      </ul>
-    </div>
-  </nav>
+ <!-- Navigation Bar -->
+ <nav class="bg-white shadow-lg">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold text-blue-500">ProxiPal</a>
+    <ul class="flex space-x-6">
+      <li><a href="/account" class="text-gray-700 hover:text-blue-500">Home</a></li>
+      <li><a href="/order" class="text-gray-700 hover:text-blue-500">New Order</a></li>
+      <li><a href="/funds" class="text-gray-700 hover:text-blue-500">Add Funds</a></li>
 
+     
+      <li><a href="/contact" class="text-gray-700 hover:text-blue-500">Contact Us</a></li>
+      
+      <!-- Display the current logged-in user's name dynamically -->
+      <li><a href="/profile" class="text-gray-700 hover:text-blue-500">Hello <%= user.name %></a></li>
+
+      <li><a href="/profile" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Profile</a></li>
+      <li><a href="/logout" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-blue-600">Disconnect</a></li>
+    </ul>
+  </div>
+</nav>
   <!-- Main Content -->
   <div class="container mx-auto py-16">
     <h1 class="text-3xl font-bold text-center mb-8">Place Your Order</h1>
