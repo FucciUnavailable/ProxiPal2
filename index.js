@@ -133,6 +133,10 @@ app.get("/login", (req, res) => {
   res.render("login"); // Render login.ejs
 });
 
+//go to proxiweb.tn
+app.get("/proxiweb.tn", (req,res)=>{
+  res.redirect("https://www.proxiweb.tn")
+})
 //contactus (not logged in) render
 app.get("/contactus", (req, res) => {
   res.render("contactus"); // Render login.ejs
