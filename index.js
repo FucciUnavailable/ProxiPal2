@@ -133,6 +133,11 @@ app.get("/login", (req, res) => {
   res.render("login"); // Render login.ejs
 });
 
+//contactus (not logged in) render
+app.get("/contactus", (req, res) => {
+  res.render("contactus"); // Render login.ejs
+});
+
 // Render signup page
 app.get("/signup", (req, res) => {
   res.render('signup', { error: null }); // Always pass error as null for the initial load
