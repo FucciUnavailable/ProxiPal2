@@ -10,14 +10,20 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
 const Transaction = require("./models/Transaction");
+const path = require('path');
 
 
+
+// Serve static files from the 'views/src' directory
+app.use('/src', express.static(path.join(__dirname, 'src')));
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+// Serve static files from the public directory
+app.use(express.static('public'));
+
 // Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static("public")); // Serve static files from public directory
 app.set("view engine", "ejs"); // Set EJS as view engine
 
 // MongoDB connection
@@ -78,22 +84,26 @@ app.post("/api/login", async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send("Incorrect email or password.");
+      console.log("User not found"); // Debug log
+      return res.status(401).json({ message: "Incorrect email or password." });
     }
 
+    console.log("User found:", user); // Debug log
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).send("Incorrect email or password.");
+      console.log("Password does not match"); // Debug log
+      return res.status(401).json({ message: "Incorrect email or password." });
     }
 
     req.session.userId = user._id; // Save user session ID
-    console.log("User ID set in session:", req.session.userId); // Add this line for debugging
-    res.redirect("/profile"); // Redirect to account page
+    console.log("User ID set in session:", req.session.userId); // Debug log
+    res.json({ redirect: "/profile" }); // Send redirect URL in JSON
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Error logging in");
+    console.error("Login error:", err); // Log the error
+    res.status(500).json({ message: "Error logging in", error: err.message }); // Include error message in response
   }
 });
+
 
 
 // Middleware to check if a user is logged in
@@ -127,10 +137,29 @@ app.get("/login", (req, res) => {
 app.get("/signup", (req, res) => {
   res.render('signup', { error: null }); // Always pass error as null for the initial load
 });
-//funds render
-app.get("/funds", ensureAuthenticated, (req, res) => {
-  res.render("funds", { title: "Add Funds" }); // Render funds.ejs
+
+
+
+// Rendering Add Funds page
+app.get("/funds", (req, res) => {
+  if (!req.session.userId) {
+      return res.redirect("/login"); // Redirect to login if not logged in
+  }
+
+  // Find the user by ID (or however you manage user sessions)
+  User.findById(req.session.userId)
+      .then(user => {
+          if (!user) {
+              return res.redirect("/login"); // Redirect if user not found
+          }
+          res.render("funds", { user }); // Pass user object to EJS template
+      })
+      .catch(err => {
+          console.error(err);
+          res.status(500).send("Internal server error");
+      });
 });
+
 
 //profile render
 app.get("/profile", ensureAuthenticated, async (req, res) => {
@@ -161,6 +190,22 @@ app.get("/order", ensureAuthenticated, async (req, res) => {
 
 
 
+// Contact Us GET route
+app.get("/contact", async (req, res) => {
+  const user = req.session.userId ? await User.findById(req.session.userId) : null;
+  res.render("contact", { title: "Contact Us", user }); // Pass title and user to the EJS template
+});
+
+// Contact Us POST route
+app.post("/submit-contact", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  // Handle form submission logic (e.g., save to database, send an email, etc.)
+  console.log('Contact Form Submission:', { name, email, message });
+
+  // Redirect or respond to the user after processing
+  res.redirect("/contact"); // Redirect back to the contact page after submission
+});
 
 
 
@@ -220,10 +265,10 @@ app.get("/logout", (req, res) => {
 
 
 
-
+/*
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
+*/
 module.exports = app; // Export the app for Vercel

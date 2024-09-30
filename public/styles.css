@@ -1,0 +1,269 @@
+body.dark-mode {
+    background-color: #1a202c;
+    color: #a0aec0;
+  }
+  body.dark-mode #newsletter {
+    background-color: #1a202c;
+    color: #a0aec0;
+  }
+  body.dark-mode header {
+    background-color: #2d3748;
+  }
+  
+  body.dark-mode footer {
+    background-color: #2d3748;
+  }
+  
+  body.dark-mode button {
+    background-color: #4a5568;
+    color: white;
+  }
+  
+  .dark-mode .dot {
+    transform: translateX(100%);
+    background-color: #a0aec0; /* Dark background for the moon */
+  }
+  
+  .dark-mode #sun-icon {
+    display: none;
+  }
+  
+  .dark-mode #moon-icon {
+    display: block;
+  }
+  
+  #darkModeToggle {
+    display: inline-block;
+  }
+  
+  #darkModeToggle:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #f6e05e; /* Color for sun */
+  }
+  
+  #sun-icon {
+    display: block;
+  }
+  
+  #moon-icon {
+    display: none;
+  }
+  
+  
+  #scrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  #scrollToTop:hover {
+    background-color: #2779bd;
+  }
+  
+  #newsletterModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  #newsletterModal .modal-content {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  button {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2c5282;
+  }
+  
+  
+  /* Footer Styling */
+  .footer {
+  background-color: #1E3A8A;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid #ccc;
+  }
+  
+  .footer-section {
+  flex: 1;
+  padding: 0 20px;
+  }
+  
+  .footer-logo-image {
+  width: 150px;
+  margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+  list-style: none;
+  padding: 0;
+  }
+  
+  .footer-section ul li {
+  margin: 5px 0;
+  }
+  
+  .footer-section ul li a {
+  text-decoration: none;
+  color: #fff;
+  }
+  
+  .contact-icons img {
+  width: 20px;
+  margin-right: 10px;
+  }
+  
+  .footer-about h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  }
+  
+  .footer-about p {
+  color: #fff;
+  }
+  
+  /* Dark Mode Styling */
+  body.dark-mode {
+  background-color: #222;
+  color: #525252;
+  }
+  
+  /* Dark Mode Styling */
+  body.dark-mode #stats {
+    background-color: #222;
+    color: #000000;
+    }
+  
+    body.dark-mode #newsletter {
+      background-color: #222;
+      color: #000000;
+      }
+  body.dark-mode .footer {
+  background-color: #333;
+  border-color: #444;
+  }
+  
+  body.dark-mode a {
+  color: #bbb;
+  }
+  
+  body.dark-mode .contact-icons img {
+  filter: invert(100%);
+  }
+  
+  /* Toggle Button Styling */
+  .toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  }
+  
+  .toggle-input {
+  display: none;
+  }
+  
+  .toggle-label {
+  display: flex;
+  align-items: center;
+  background-color: #ddd;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  }
+  
+  .toggle-label .toggle-moon, .toggle-label .toggle-sun {
+  font-size: 18px;
+  padding: 5px;
+  }
+  
+  .toggle-input:checked + .toggle-label {
+  background-color: #444;
+  }
+  
+  .toggle-input:checked + .toggle-label .toggle-moon {
+  color: #fff;
+  }
+  
+  .toggle-input:checked + .toggle-label .toggle-sun {
+  color: #b4b4b4;
+  }
+  
+  body {
+  transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+  }
+  .slide {
+  min-width: 100%;
+  position: relative;
+  display: none; /* Hide all slides initially */
+  }
+  .slide.active {
+  display: block; /* Show the active slide */
+  }
+  
+  input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(67, 50, 224, 0.5); /* Yellow focus ring */
+  }
+  
+  img.white {
+    filter: brightness(0) invert(1);
+  }
+  
+  
+  #newsletter {
+    border-radius: 8px; /* Rounded corners for the section */
+    overflow: hidden; /* Ensures no overflow from child elements */
+  }
+  
+  #newsletter input {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  #newsletter button {
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  
+  
+  #scrollToTop {
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  
+  #language-icon {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #language-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge the icon */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+  }

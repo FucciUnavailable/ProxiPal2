@@ -4,7 +4,7 @@
   "description": "digital wallet website",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "\"test\""
   },
   "repository": {
@@ -28,7 +28,8 @@
     "express": "^4.21.0",
     "express-session": "^1.18.0",
     "mongoose": "^8.6.3",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "prettier": "3.3.3"
