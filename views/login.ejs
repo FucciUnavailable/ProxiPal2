@@ -87,23 +87,59 @@
 </header>
 
   <!-- Login Section -->
-  <form id="login-form" onsubmit="event.preventDefault(); login();">
+<!-- Login Section -->
+<form id="login-form" onsubmit="event.preventDefault(); login();">
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
-      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h1 class="text-2xl font-bold mb-4 text-center">Login to Your Wallet</h1>
-        <input id="email" class="border p-2 w-full mb-4" type="email" name="email" placeholder="Email" required>
-        <input id="password" class="border p-2 w-full mb-4" type="password" name="password" placeholder="Password" required>
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded mb-4">Sign In</button>
-        <p class="text-center text-sm text-gray-500">Don't have an account? <a href="/signup" class="text-blue-500 hover:underline">Register here</a></p>
+      <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+  
+        <!-- Eyes that open/close -->
+        <div class="flex justify-center mb-6">
+          <img id="eye-icon" src="/src/login-icon.png" alt="Open Eyes" class="w-24 h-24 rounded-full shadow-md filter-blue">
+        </div>
+  
+        <!-- Title -->
+        <h1 class="text-3xl font-bold mb-4 text-center text-gray-800">Login to ProxiShop</h1>
+  
+        <!-- Email Input -->
+        <input id="email" class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="email" name="email" placeholder="Email" required>
+  
+        <!-- Password Input -->
+        <input id="password" class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="password" name="password" placeholder="Password" required>
+  
+        <!-- Sign In Button -->
+        <button type="submit" class="bg-blue-700 hover:bg-blue-900 text-white w-full py-3 rounded-md shadow-lg transition duration-300 ease-in-out">Sign In</button>
+  
+        <!-- Login Redirect -->
+        <p class="text-center text-sm text-gray-500 mt-4">Don't have an account? <a href="/signup" class="text-blue-600 hover:underline">Register here</a></p>
       </div>
     </div>
   </form>
   
   <script>
+    const eyeIcon = document.getElementById("eye-icon");
+    const passwordInput = document.getElementById("password");
+  
+    // Function to close eyes when typing
+    function closeEyes() {
+      eyeIcon.src = "/src/password.png"; // Change to the closed eyes image
+    }
+  
+    // Function to open eyes when not typing
+    function openEyes() {
+      eyeIcon.src = "/src/login-icon.png"; // Change to the open eyes image
+    }
+  
+    // Add event listeners to the password field
+    passwordInput.addEventListener("focus", closeEyes); // Close eyes when focusing
+    passwordInput.addEventListener("input", closeEyes); // Keep eyes closed while typing
+    passwordInput.addEventListener("blur", openEyes);  // Open eyes when leaving the field
+  </script>
+  
+  <script>
     async function login() {
-        const email = document.getElementById("email").value.trim(); // Use trim to avoid spaces
-        const password = document.getElementById("password").value.trim(); // Use trim to avoid spaces
-
+        const email = document.getElementById("email").value.trim(); 
+        const password = document.getElementById("password").value.trim(); 
+  
         try {
             const response = await fetch("/api/login", {
                 method: "POST",
@@ -112,14 +148,12 @@
                 },
                 body: JSON.stringify({ email, password }),
             });
-
+  
             const data = await response.json();
-
+  
             if (response.ok) {
-                // If login is successful, redirect to profile
                 window.location.href = data.redirect;
             } else {
-                // If there's an error, show alert with the error message
                 alert(data.message);
             }
         } catch (error) {
@@ -128,6 +162,12 @@
         }
     }
   </script>
+  <style>
+    /* Apply a dark blue filter to the image */
+    .filter-blue {
+      filter: brightness(0) saturate(100%) invert(17%) sepia(79%) saturate(2644%) hue-rotate(182deg) brightness(94%) contrast(102%);
+    }
+  </style>
 
   <!-- Security Section -->
   <div class="p-4">

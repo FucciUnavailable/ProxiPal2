@@ -85,38 +85,47 @@
       </div>
   </label>
 </header>
-  <!-- Sign Up Section -->
-  <div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-      <h1 class="text-2xl font-bold mb-4 text-center">Create a New Account</h1>
+<!-- Sign Up Section -->
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
 
-      <form action="/api/signup" method="POST">
-        <!-- Name Input -->
-        <input class="border p-2 w-full mb-4" type="text" name="name" placeholder="Full Name" required>
-
-        <!-- Email Input -->
-        <input class="border p-2 w-full mb-4" type="email" name="email" placeholder="Email" required>
-
-        <!-- Password Input -->
-        <input class="border p-2 w-full mb-4" type="password" name="password" placeholder="Password" required>
-
-        <!-- Confirm Password Input -->
-        <input class="border p-2 w-full mb-4" type="password" name="confirm-password" placeholder="Confirm Password" required>
-
-        <!-- Sign Up Button -->
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded mb-4">Sign Up</button>
-      </form>
-
-      <!-- Display Error Message -->
-      <% if (error) { %>
-        <div class="bg-red-500 text-white p-2 rounded mb-4">
-          <%= error %>
-        </div>
-      <% } %>
-
-      <p class="text-center text-sm text-gray-500">Already have an account? <a href="/login" class="text-blue-500 hover:underline">Login here</a></p>
+    <!-- Image of a person signing up -->
+    <div class="flex justify-center mb-6">
+      <img src="/src/signup-logo.png" alt="Sign Up" class="w-24 h-24 rounded-full shadow-md">
     </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl font-bold mb-4 text-center text-gray-800">Create a New Account</h1>
+
+    <!-- Form -->
+    <form action="/api/signup" method="POST">
+      <!-- Name Input -->
+      <input class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="text" name="name" placeholder="Full Name" required>
+
+      <!-- Email Input -->
+      <input class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="email" name="email" placeholder="Email" required>
+
+      <!-- Password Input -->
+      <input class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="password" name="password" placeholder="Password" required>
+
+      <!-- Confirm Password Input -->
+      <input class="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 p-3 w-full mb-4 rounded-md" type="password" name="confirm-password" placeholder="Confirm Password" required>
+
+      <!-- Sign Up Button -->
+      <button type="submit" class="bg-blue-700 hover:bg-blue-900 text-white w-full py-3 rounded-md shadow-lg transition duration-300 ease-in-out">Sign Up</button>
+    </form>
+
+    <!-- Error Message -->
+    <% if (error) { %>
+      <div class="bg-red-500 text-white p-3 rounded-md mt-4 shadow-md">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <!-- Login Redirect -->
+    <p class="text-center text-sm text-gray-500 mt-4">Already have an account? <a href="/login" class="text-blue-600 hover:underline">Login here</a></p>
   </div>
+</div>
 
 <!-- Footer Section -->
 <footer class="bg-blue-900 text-white py-6">

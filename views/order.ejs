@@ -51,64 +51,84 @@
     </div>
   </header>
 
-  <!-- Main Content -->
-  <div class="container mx-auto py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Main Content -->
+<div class="container mx-auto py-16">
+  <div class="flex flex-col items-center justify-center">
 
-      <!-- Product Information Form -->
-      <div class="bg-white p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-6">Product Information</h2>
-        <form action="/api/orders" method="POST">
+    <!-- Circular Image at the Top -->
+    <div class="mb-8">
+      <img src="/src/order-icon.png" alt="User Icon" class="w-24 h-24 rounded-full shadow-md">
+    </div>
+
+    <!-- Combined Form -->
+    <div class="bg-white p-10 rounded-lg shadow-2xl w-full max-w-2xl">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Product and User Information</h2>
+
+      <form action="/api/orders" method="POST">
+        <!-- Product Information Section -->
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-blue-600">Product Information</h3>
+
           <div class="mb-4">
             <label for="productName" class="block text-gray-700 font-bold mb-2">Product Name</label>
-            <input type="text" id="productName" name="productName" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product name" required>
+            <input type="text" id="productName" name="productName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product name" required>
           </div>
+
           <div class="mb-4">
             <label for="reference" class="block text-gray-700 font-bold mb-2">Reference (Optional)</label>
-            <input type="text" id="reference" name="reference" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Reference number or code">
+            <input type="text" id="reference" name="reference" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Reference number or code">
           </div>
+
           <div class="mb-4">
             <label for="specification" class="block text-gray-700 font-bold mb-2">Specifications</label>
-            <textarea id="specification" name="specification" rows="4" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product specifications"></textarea>
+            <textarea id="specification" name="specification" rows="4" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product specifications"></textarea>
           </div>
+
           <div class="mb-4">
             <label for="link" class="block text-gray-700 font-bold mb-2">Product Link</label>
-            <input type="url" id="link" name="link" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product link">
+            <input type="url" id="link" name="link" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter product link">
           </div>
+
           <div class="mb-6">
             <label for="imageUpload" class="block text-gray-700 font-bold mb-2">Upload Product Image</label>
-            <input type="file" id="imageUpload" name="imageUpload" class="w-full">
+            <input type="file" id="imageUpload" name="imageUpload" class="w-full p-2 border rounded-lg">
           </div>
-          <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 transition">Submit Product</button>
-        </form>
-      </div>
+        </div>
 
-      <!-- User Information Form -->
-      <div class="bg-white p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-6">User Information</h2>
-        <form action="/api/user-info" method="POST">
+        <!-- User Information Section -->
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold mb-4 text-blue-600">User Information</h3>
+
           <div class="mb-4">
             <label for="name" class="block text-gray-700 font-bold mb-2">Full Name</label>
-            <input type="text" id="name" name="name" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your full name" required>
+            <input type="text" id="name" name="name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your full name" required>
           </div>
+
           <div class="mb-4">
             <label for="address" class="block text-gray-700 font-bold mb-2">Billing Address</label>
-            <input type="text" id="address" name="address" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter billing address" required>
+            <input type="text" id="address" name="address" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter billing address" required>
           </div>
+
           <div class="mb-4">
             <label for="phone" class="block text-gray-700 font-bold mb-2">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter phone number" required>
+            <input type="tel" id="phone" name="phone" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter phone number" required>
           </div>
+
           <div class="mb-6">
             <label for="email" class="block text-gray-700 font-bold mb-2">Email Address</label>
-            <input type="email" id="email" name="email" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter email address" required>
+            <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter email address" required>
           </div>
-          <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 transition">Submit Information</button>
-        </form>
-      </div>
+        </div>
 
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="bg-blue-700 hover:bg-blue-900 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
+
 
   <!-- Footer Section -->
   <footer class="bg-blue-900 text-white py-6">
