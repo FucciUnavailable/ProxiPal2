@@ -11,26 +11,38 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
 
- <!-- Navigation Bar -->
- <nav class="bg-white shadow-lg">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="/" class="text-2xl font-bold text-blue-500">ProxiSHOP</a>
-    <ul class="flex space-x-6">
-      <li><a href="/account" class="text-gray-700 hover:text-blue-500">Home</a></li>
-      <li><a href="/order" class="text-gray-700 hover:text-blue-500">New Order</a></li>
-      <li><a href="/funds" class="text-gray-700 hover:text-blue-500">Add Funds</a></li>
+<!-- Navigation Bar -->
+<header class="w-full bg-blue-900 py-4 px-8 flex justify-between items-center">
+  <!-- Logo -->
+  <a href="/" class="flex items-center">
+      <img src="src/proxishop_logo.png" alt="ProxiSHOP Logo" class="w-32">
+  </a>
 
-     
-      <li><a href="/contact" class="text-gray-700 hover:text-blue-500">Contact Us</a></li>
-      
+  <!-- Navigation Links -->
+  <nav class="flex space-x-6 text-white">
+      <a href="/account" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 px-2 py-1 rounded">Home</a>
+      <a href="/order" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 px-2 py-1 rounded">New Order</a>
+      <a href="/funds" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 px-2 py-1 rounded">Add Funds</a>
+      <a href="/contact" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 px-2 py-1 rounded">Contact Us</a>
+
       <!-- Display the current logged-in user's name dynamically -->
-      <li><a href="/profile" class="text-gray-700 hover:text-blue-500">Hello <%= user.name %></a></li>
+      <a href="/profile" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 px-2 py-1 rounded">
+          Hello <%= user.name %>
+      </a>
 
-      <li><a href="/profile" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Profile</a></li>
-      <li><a href="/logout" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-blue-600">Disconnect</a></li>
-    </ul>
-  </div>
-</nav>
+      <a href="/profile" class="transition duration-300 transform hover:bg-blue-700 hover:scale-105 bg-green-500 px-4 py-2 rounded-full text-white">Profile</a>
+      <a href="/logout" class="transition duration-300 transform hover:bg-red-600 bg-red-500 px-4 py-2 rounded-full text-white">Disconnect</a>
+  </nav>
+
+  <!-- Dark Mode Toggle -->
+  <label for="darkModeToggle" class="ml-4 flex items-center cursor-pointer">
+      <div class="relative">
+          <input type="checkbox" id="darkModeToggle" class="sr-only">
+          <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+          <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+      </div>
+  </label>
+</header>
 
   <!-- Add Funds Section -->
   <div class="p-8 max-w-lg mx-auto">
