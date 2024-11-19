@@ -1,17 +1,19 @@
 # ProxiPal2
 Project with my brother. He designs, I code. Power of Brothership.
 
+##Stack used
 
-Front-end:
 
--Ejs
+###Front-end:
 
--Tailwind
+*Ejs
 
-Back-end:
+*Tailwind
 
--NodeJs (express)
+###Back-end
 
--MongoDb (mongoose)
+*NodeJs (express)
 
--Bcrypt (hashed pw)
+*MongoDb (mongoose)
+
+*Bcrypt (hashed pw)
