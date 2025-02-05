@@ -17,3 +17,5 @@ Project with my brother. He designs, I code. Power of Brothership.
 *MongoDb (mongoose)
 
 *Bcrypt (hashed pw)
+
+backend API calls in work
